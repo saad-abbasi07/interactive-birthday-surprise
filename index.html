@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#07110d">
+<title>Tuba — Birthday Surprise</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ambient ambient-one" aria-hidden="true"></div>
+<div class="ambient ambient-two" aria-hidden="true"></div>
+<div class="grid-glow" aria-hidden="true"></div>
+<div class="floating" id="floating" aria-hidden="true"></div>
+
+<button class="music-button" id="musicButton" type="button" aria-label="Toggle birthday sounds" title="Sound">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16 9.5a4 4 0 0 1 0 5"/><path d="M18.5 7a7 7 0 0 1 0 10"/></svg>
+</button>
+
+<main class="app-shell">
+
+<section class="screen active" id="screen-passcode">
+  <div class="card passcode-card">
+    <div class="illustration glow-lock" aria-hidden="true">
+      <svg viewBox="0 0 180 150">
+        <rect x="46" y="61" width="88" height="66" rx="18" class="fill-green"/>
+        <path d="M65 63V48c0-16 11-27 25-27s25 11 25 27v15" class="stroke-cream"/>
+        <circle cx="90" cy="91" r="9" class="fill-orange"/>
+        <path d="M90 100v13" class="stroke-cream"/>
+        <path d="M31 131h118" class="stroke-orange"/>
+      </svg>
+    </div>
+    <p class="eyebrow">A little secret for Tuba</p>
+    <h1>Enter the Passcode</h1>
+    <p class="subtitle">15 August is waiting behind one tiny secret.</p>
+    <div class="pin-dots" id="pinDots" aria-label="Passcode progress">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="keypad" aria-label="Number keypad">
+      <button data-number="1">1</button><button data-number="2">2</button><button data-number="3">3</button>
+      <button data-number="4">4</button><button data-number="5">5</button><button data-number="6">6</button>
+      <button data-number="7">7</button><button data-number="8">8</button><button data-number="9">9</button>
+      <button class="key-action" id="clearPin">Clear</button><button data-number="0">0</button><button class="key-action" id="deletePin" aria-label="Delete">⌫</button>
+    </div>
+    <button class="primary-button" id="unlockButton">
+      <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      Unlock
+    </button>
+    <p class="error-message" id="passcodeError"></p>
+  </div>
+</section>
+
+<section class="screen" id="screen-question">
+  <div class="card">
+    <div class="illustration gift-art" aria-hidden="true">
+      <svg viewBox="0 0 200 150">
+        <rect x="43" y="56" width="114" height="66" rx="13" class="fill-orange"/>
+        <rect x="35" y="46" width="130" height="24" rx="9" class="fill-green"/>
+        <path d="M100 46v76" class="stroke-cream thick"/>
+        <path d="M100 46c-24-4-34-17-22-27 10-8 23 7 22 27Zm0 0c24-4 34-17 22-27-10-8-23 7-22 27Z" class="stroke-cream"/>
+      </svg>
+    </div>
+    <p class="eyebrow">Wait, Tuba</p>
+    <h2>I made something special for you.</h2>
+    <p class="big-question">Do you want to see it?</p>
+    <div class="button-row">
+      <button class="choice-button yes" id="showSurpriseButton">
+        <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+        Yes
+      </button>
+      <button class="choice-button no" id="noButton">
+        <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        No
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="screen-no">
+  <div class="card">
+    <div class="illustration no-art" aria-hidden="true">
+      <svg viewBox="0 0 200 150">
+        <circle cx="100" cy="74" r="43" class="stroke-orange"/>
+        <path d="m82 56 36 36M118 56 82 92" class="stroke-cream thick"/>
+        <path d="M55 123h90" class="stroke-green"/>
+        <path d="M67 111c20 9 46 9 66 0" class="stroke-cream"/>
+      </svg>
+    </div>
+    <p class="eyebrow">Nice try</p>
+    <h2>NO? Seriously, Tuba?</h2>
+    <p class="subtitle">It took me longer to make this than it takes you to press Yes.</p>
+    <p class="mini-note">Chalo, ek aur chance. This button is not giving up.</p>
+    <button class="primary-button" id="tryAgainButton">Try Again</button>
+  </div>
+</section>
+
+<section class="screen" id="screen-birthday">
+  <div class="card birthday-card">
+    <div class="birthday-burst" aria-hidden="true"></div>
+    <p class="eyebrow">15 August 2026</p>
+    <h2 class="birthday-heading">Happy Birthday,<br><span>Tuba!</span></h2>
+    <div class="hero-photo reveal-photo"><img src="assets/photos/tuba-library.jpg" alt="Tuba reading in a library"></div>
+    <div class="illustration cake-art" aria-hidden="true">
+      <svg viewBox="0 0 220 150">
+        <path d="M72 66h76v50H72z" class="fill-orange"/>
+        <path d="M64 66c4-18 88-18 92 0" class="fill-green"/>
+        <path d="M75 52c5-12 11 12 16 0s11 12 16 0 11 12 16 0 11 12 16 0" class="stroke-cream thick"/>
+        <path d="M88 39V23M110 39V20M132 39V23" class="stroke-orange thick"/>
+        <path d="M84 21c0-4 8-4 8 0M106 18c0-4 8-4 8 0M128 21c0-4 8-4 8 0" class="stroke-green"/>
+        <path d="M94 83v23M126 83v23" class="stroke-cream"/>
+      </svg>
+    </div>
+    <p class="subtitle">Today is officially Tuba Day. No arguments accepted.</p>
+    <button class="primary-button" data-next="screen-wish-one">Open My Wishes</button>
+  </div>
+</section>
+
+<section class="screen" id="screen-wish-one">
+  <div class="card wish-card">
+    <p class="eyebrow">01 · Dil se</p>
+    <h2>Happy Birthday to a genuinely special friend.</h2>
+    <div class="photo-collage">
+      <div class="photo-main"><img src="assets/photos/tuba-reading.jpg" alt="Tuba reading"></div>
+      <div class="photo-small top"><img src="assets/photos/tuba-black.jpg" alt="Tuba with a book"></div>
+      <div class="photo-small bottom"><img src="assets/photos/tuba-horse.jpg" alt="Tuba outdoors"></div>
+    </div>
+    <p>Allah tumhari zindagi ko sukoon, khushi aur bohat si achi yaadon se bhar de. Tum jaisi ho, waisi hi rehna — simple, kind aur thori si funny.</p>
+    <p class="highlight">Bas aaj ka din tumhare naam. No work. No tension. Sirf khushi.</p>
+    <button class="primary-button" data-next="screen-wish-two">Next Wish</button>
+  </div>
+</section>
+
+<section class="screen" id="screen-wish-two">
+  <div class="card wish-card">
+    <p class="eyebrow">02 · Dua</p>
+    <h2>Allah tumhari har achi dua qabool kare.</h2>
+    <div class="illustration dua-art" aria-hidden="true">
+      <svg viewBox="0 0 200 150">
+        <path d="M106 28c-29 4-43 28-39 52 4 27 31 42 58 31-22 2-39-12-41-34-2-20 8-38 22-49Z" class="fill-green"/>
+        <path d="M123 42h4M139 59h4M143 83h4M119 105h4" class="stroke-orange thick"/>
+        <path d="M54 122c23-9 70-9 93 0" class="stroke-cream"/>
+      </svg>
+    </div>
+    <p class="dua">Allah tumhein hamesha apni hifazat mein rakhe, tumhare dil ko sukoon de, tumhare raste asaan kare, tumhari mehnat mein barkat de aur tumhein har woh khushi ata kare jo tumhare liye behtareen ho. Ameen.</p>
+    <p class="mini-note">Aur haan — smile karna mandatory hai.</p>
+    <button class="primary-button" data-next="screen-wish-three">Next Wish</button>
+  </div>
+</section>
+
+<section class="screen" id="screen-wish-three">
+  <div class="card wish-card">
+    <p class="eyebrow">03 · Your year</p>
+    <h2>May this year bring you beautiful surprises.</h2>
+    <div class="hero-photo horse-photo reveal-photo"><img src="assets/photos/tuba-horse.jpg" alt="Tuba outdoors with a horse"></div>
+    <p>New memories, new places, new achievements — aur woh sab cheezen jo tum dil se chahti ho. May this new chapter be lighter, happier and full of barakah.</p>
+    <p class="highlight">15 August se officially next level unlocked.</p>
+    <button class="primary-button" data-next="screen-hug">Continue</button>
+  </div>
+</section>
+
+<section class="screen" id="screen-hug">
+  <div class="card">
+    <div class="illustration friend-art" aria-hidden="true">
+      <svg viewBox="0 0 220 150">
+        <path d="M62 112c-7-22 1-45 23-53 20-7 36 5 43 20" class="stroke-green thick"/>
+        <path d="M158 112c7-22-1-45-23-53-20-7-36 5-43 20" class="stroke-orange thick"/>
+        <path d="M72 83c18 15 58 15 76 0" class="stroke-cream thick"/>
+        <path d="M90 91c7 17 33 17 40 0" class="stroke-cream"/>
+        <path d="M100 42c-7-12-25-6-25 7 0 13 25 28 25 28s25-15 25-28c0-13-18-19-25-7Z" class="fill-orange"/>
+      </svg>
+    </div>
+    <p class="eyebrow">A little friend moment</p>
+    <h2>Sending you a virtual hug.</h2>
+    <p class="big-question">Doori ho sakti hai, dosti ka vibe nahi.</p>
+    <p class="subtitle">Birthday wali dua + dost wali bakwas — dono included hain.</p>
+    <button class="primary-button" data-next="screen-favourite">One Last Question</button>
+  </div>
+</section>
+
+<section class="screen" id="screen-favourite">
+  <div class="card">
+    <div class="hero-photo portrait reveal-photo"><img src="assets/photos/tuba-black.jpg" alt="Tuba"></div>
+    <p class="eyebrow">Important question</p>
+    <h2>Ready for another year of being amazing?</h2>
+    <div class="illustration question-art" aria-hidden="true">
+      <svg viewBox="0 0 200 130">
+        <circle cx="100" cy="65" r="45" class="stroke-green"/>
+        <path d="M84 51c2-14 30-17 35-2 4 13-12 17-17 25" class="stroke-cream thick"/>
+        <circle cx="102" cy="94" r="3" class="fill-orange"/>
+      </svg>
+    </div>
+    <div class="button-row">
+      <button class="choice-button yes final-choice">Absolutely <svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></button>
+      <button class="choice-button yes final-choice">Obviously <svg viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="screen-final">
+  <div class="card final-card">
+    <div class="final-rings" aria-hidden="true"></div>
+    <div class="hero-photo final-photo reveal-photo"><img src="assets/photos/tuba-horse.jpg" alt="Tuba outdoors"></div>
+    <div class="illustration celebration-art" aria-hidden="true">
+      <svg viewBox="0 0 220 140">
+        <path d="M68 113h84" class="stroke-orange thick"/>
+        <path d="M80 113V73h60v40" class="stroke-cream thick"/>
+        <path d="M100 73V51M120 73V44" class="stroke-green thick"/>
+        <path d="M42 33l12 16M54 25l3 21M178 33l-12 16M166 25l-3 21M100 23v17M120 18v22" class="stroke-orange"/>
+        <circle cx="100" cy="42" r="4" class="fill-green"/><circle cx="120" cy="39" r="4" class="fill-orange"/>
+      </svg>
+    </div>
+    <p class="eyebrow">15 · August · 2026</p>
+    <h2 id="finalTitle">Happy Birthday, Tuba!</h2>
+    <p class="final-to">From a friend who just wanted to make you smile.</p>
+    <div class="divider" aria-hidden="true"><span></span><i></i><span></span></div>
+    <p class="final-message">Allah tumhari zindagi mein hamesha khair, sukoon, sehat, kamyabi aur bohat si muskurahat rakhe. May every coming year be kinder and brighter than the last. Ameen.</p>
+    <p class="date-line">Keep smiling. Keep being you.</p>
+    <button class="secondary-button" id="replayButton">
+      <svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.9-4L3 9"/><path d="M3 4v5h5"/><path d="M4 13a8 8 0 0 0 14.9 4L21 15"/><path d="M21 20v-5h-5"/></svg>
+      Replay Surprise
+    </button>
+  </div>
+</section>
+
+</main>
+<div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+<audio id="passcodeMusic" loop preload="auto"><source src="assets/audio/happy-birthday-background.mp3" type="audio/mpeg"></audio>
+<audio id="friendMusic" loop preload="auto"><source src="assets/audio/happy-birthday-background.mp3" type="audio/mpeg"></audio>
+<audio id="birthdayMusic" loop preload="auto"><source src="assets/audio/happy-birthday-background.mp3" type="audio/mpeg"></audio>
+<audio id="finalMusic" loop preload="auto"><source src="assets/audio/happy-birthday-background.mp3" type="audio/mpeg"></audio>
+<audio id="revealSound" preload="auto"><source src="assets/audio/reveal-chime.wav" type="audio/wav"></audio>
+<audio id="celebrationSound" preload="auto"><source src="assets/audio/celebration.wav" type="audio/wav"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
