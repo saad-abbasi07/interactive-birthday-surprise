@@ -11,4 +11,4 @@ Sound behavior:
 - Final celebration: final uplifting music + existing celebration sound.
 - Sound toggle remains available.
 
-Extra polish: gentle screen entrance, photo breathing/zoom and small non-emoji sparkle motion.
+Extra polish: gentle screen entrance, photo breathing/zoom and small sparkle motion.
